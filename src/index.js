@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
 
-// configuring multer for uploading files
+// configuring multer for uploading Word files
 const upload = multer({
   dest: 'images',
   limits: {
@@ -34,6 +34,8 @@ const upload = multer({
 
 app.post('/upload', upload.single('upload'), (req, res) => {
   res.send()
+}, (error, req, res, next) => {
+  res.status(400).send({ error: error.message })
 })
 
 // connect to server
