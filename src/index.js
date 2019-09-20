@@ -1,4 +1,5 @@
 const express = require('express')
+const multer = require('multer')
 
 // require local DB
 require('./db/mongoose')
@@ -16,24 +17,26 @@ app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
 
+// configuring multer for uploading files
+const upload = multer({
+  dest: 'images',
+  limits: {
+    // set in bytes, so 2000000 = 2MB
+    fileSize: 1000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(doc|docx)$/g)) {
+      return cb(new Error('Please upload a Word document only.'))
+    }
+    cb(undefined, true)
+  }
+})
+
+app.post('/upload', upload.single('upload'), (req, res) => {
+  res.send()
+})
+
 // connect to server
 app.listen(port, () => {
   console.log(`Server is up on port ${port}.`)
 })
-
-// // =====================================
-//
-// const Task = require('./models/task')
-// const User = require('./models/user')
-//
-// const main = async () => {
-//   // const task = await Task.findById('5d80fa8e9686190b5e68b886')
-//   // await task.populate('owner').execPopulate()
-//   // console.log(task.owner)
-//
-//   const user = await User.findById('5d80f96ac7d3d40b1b329422')
-//   await user.populate('tasks').execPopulate()
-//   console.log(user.tasks)
-// }
-//
-// main()
