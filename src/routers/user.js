@@ -97,14 +97,12 @@ router.delete('/users/me', auth, async (req, res) => {
   }
 })
 
-// add an avatar image to a profile using multer
+// set up multer for avatars
 const upload = multer({
-  dest: 'avatars',
   limits: {
     fileSize: 1000000
   },
   fileFilter(req, file, cb) {
-
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/g)) {
       return cb(new Error('Please upload a jpg or png file only.'))
     }
@@ -112,10 +110,21 @@ const upload = multer({
   }
 })
 
-router.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
+// add an avatar image to a profile
+router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
+  // store avatar images in buffer
+  req.user.avatar = req.file.buffer
+  await req.user.save()
   res.send()
 }, (error, req, res, next) => {
   res.status(400).send({ error: error.message })
+})
+
+// delete an avatar
+router.delete('/users/me/avatar', auth, async (req, res) => {
+  req.user.avatar = undefined
+  await req.user.save()
+  res.send()
 })
 
 // ============================
