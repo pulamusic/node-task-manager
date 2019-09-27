@@ -6,6 +6,7 @@ This project was created for a Udemy tutorial titled [The Complete Node.js Devel
 * Run `npm run dev` to start the development server.
 
 **NOTE (09/22/2019)**: I'm having trouble uploading avatar images to the database. Refer back to [this video](https://www.udemy.com/the-complete-nodejs-developer-course-2/learn/lecture/13729388#content).
+* **IDEA**: Re-try uploading avatar images when I am not logged into the STCC server. I've had some trouble with their firewall.
 
 ---
 
@@ -13,8 +14,8 @@ This project was created for a Udemy tutorial titled [The Complete Node.js Devel
 
 ### **TO-DO**
 - [x] Create `/public` and `/templates` directories for front-end code.
-- [ ] Add [Handlebars](https://www.npmjs.com/package/hbs) dependency so I can create HTML templates.
-- [ ] Add [Nodemon](https://www.npmjs.com/package/nodemon) as a dev-dependency.
+- [x] Add [Handlebars](https://www.npmjs.com/package/hbs) dependency so I can create HTML templates.
+- [x] Add [Nodemon](https://www.npmjs.com/package/nodemon) as a dev-dependency.
 - [ ] Create HTML &amp; CSS for front-end.
 - [ ] Make sure the `/routers` files link to front-end pages.
 - [ ] Re-watch the weather app videos on preparing the code for deployment to Heroku.
