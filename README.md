@@ -16,6 +16,6 @@ This project was created for a Udemy tutorial titled [The Complete Node.js Devel
 - [x] Create `/public` and `/templates` directories for front-end code.
 - [x] Add [Handlebars](https://www.npmjs.com/package/hbs) dependency so I can create HTML templates.
 - [x] Add [Nodemon](https://www.npmjs.com/package/nodemon) as a dev-dependency.
-- [ ] Create HTML &amp; CSS for front-end.
+- [x] Create HTML &amp; CSS for front-end.
 - [ ] Make sure the `/routers` files link to front-end pages.
-- [ ] Re-watch the weather app videos on preparing the code for deployment to Heroku.
+- [ ] Re-watch the weather app videos on preparing the code for deployment to [Heroku](https://dashboard.heroku.com/auth/heroku/callback?code=bd586c82-5905-4530-9038-a6400eb40226).
